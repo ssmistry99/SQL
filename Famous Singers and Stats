@@ -1,0 +1,49 @@
+/* Create table about famous singers */
+CREATE TABLE singers 
+(id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT); 
+
+INSERT INTO singers (name) VALUES ("Ariana Grande");
+INSERT INTO singers (name) VALUES ("Alicia Keys");
+INSERT INTO singers (name) VALUES ("Rihanna");
+INSERT INTO singers (name) VALUES ("Nicki Minaj");
+INSERT INTO singers (name) VALUES ("Doja Cat");
+INSERT INTO singers (name) VALUES ("Beyonce");
+
+/*Create table about famous songs and who's featured on them*/
+CREATE TABLE songs 
+(id INTEGER PRIMARY KEY AUTOINCREMENT,
+singer_id INTEGER,
+title TEXT, 
+featured_id INTEGER); 
+
+INSERT INTO songs (singer_id, title, featured_id) VALUES
+(1, "Bang Bang", 4), 
+(2, "No One", null), 
+(1, "Motive", 5), 
+(2, "Put it in a love song", 6),
+(6, "Flawless Remix", 4), 
+(4, "Feeling Myself", 6),
+(3, "Love on the Brain", null),
+(1, "Side to Side", 4),
+(4, "Bed", 1),
+(4, "Fly", 3),
+(5, "I Don't Do Drugs", 1),
+(5, "Vegas", null); 
+
+/*Select all of the singers and their song titles*/
+SELECT singers.name, songs.title
+    FROM singers
+    JOIN songs
+    ON singers.id = songs.singer_id
+    ORDER BY singers.id;
+
+/*Select all songs with featured singers*/
+SELECT title, a.name AS singer, b.name AS featured
+    FROM songs 
+    JOIN singers a
+    ON a.id = songs.singer_id
+    JOIN singers b
+    ON b.id = songs.featured_id
+    ORDER BY a.id;
+
+
