@@ -2,7 +2,7 @@
 
 CREATE TABLE store (id INTEGER PRIMARY KEY, item TEXT, aisle INTEGER, quantity INTEGER, price INTEGER);
 
---milk, ice cream, toothpaste, tissues, diapers, makeup, hotdogs, nachos, advil, candy, chips, 
+-- store items: milk, ice cream, toothpaste, tissues, diapers, makeup, hotdogs, nachos, advil, candy, chips, 
 water, soda, coffee, energy drinks, lottery tickets, beer
 
 INSERT INTO store VALUES (1, "milk", 1, 40, 3.99);
