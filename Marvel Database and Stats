@@ -48,17 +48,19 @@ INSERT INTO marvels VALUES(25, "Juggernaut", 76, "Neutral", "Male", 2.87, 862, "
 INSERT INTO marvels VALUES(26, "Professor X", 58, "Good", "Male", 1.83, 86, "EUA", 5, 2, 2, 2, 5, 3);
 
 
-/*Find the average weight and height of the Marvels rounded to two decimal places*/
+-- #1. Find the average weight and height of the Marvels rounded to two decimal places.
+
 SELECT ROUND(AVG(height_m), 2) AS Average_Height, 
 ROUND(AVG(weight_kg), 2) AS Average_Weight
 FROM marvels;
 
-/*Find the names and alignments of the marvels that have greater strength than 5 and higher intelligence than 4*/
+-- #2. Find the names and alignments of the marvels that have greater strength than 5 and higher intelligence than 4.
 SELECT name, alignment FROM marvels 
 WHERE strength >= 5 
 AND intelligence >= 4;
 
-/*Find the number of marvels in each catagory based on their fighting skills as average, below or above*/
+-- #3. Find the number of marvels in each catagory based on their fighting skills as average, below or above.
+
 SELECT COUNT(*),
 CASE
         WHEN fighting_Skills > 5 THEN "Above Average"
