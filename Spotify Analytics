@@ -1,6 +1,6 @@
-# For this project, I downloaded Spotify data from Kaggle.
-# Then I created a table to insert Spotify data into.
-# Finally, I performed analytics on the data using SQL. 
+-- For this project, I downloaded Spotify data from Kaggle.
+-- Then I created a table to insert Spotify data into.
+-- Finally, I performed analytics on the data using SQL. 
 
 CREATE TABLE BIT_DB.Spotifydata (
 id integer PRIMARY KEY,
@@ -25,7 +25,8 @@ time_signature integer NOT NULL
 
 SELECT * FROM BIT_DB.Spotifydata LIMIT 10;
 
-/* #1 What is the average popularity, danceability, and energy by artist and track? */
+-- #1 What is the average popularity, danceability, and energy by artist and track? 
+
 SELECT
 artist_name
 ,track_name
@@ -36,29 +37,34 @@ FROM BIT_DB.spotifydata
 GROUP BY artist_name, track_name;
 
 
-/* #2 What are the 10 artists by popularity? */
+-- #2 What are the 10 artists by popularity? 
+
 SELECT track_name, artist_name, popularity
 FROM BIT_DB.spotifydata
 ORDER BY popularity desc
 LIMIT 10;
 
 
-/* #3 What is the average danceability and energy for the Top 10 songs? */
+-- #3 What is the average danceability and energy for the Top 10 songs? 
+
 SELECT avg(danceability), avg(energy)
 FROM BIT_DB.Spotifydata;
 
-/* #4 Which artist released the longest song? */
+-- #4 Which artist released the longest song? 
+
 SELECT track_name, artist_name, duration_ms
 FROM BIT_DB.Spotifydata
 ORDER BY duration_ms desc
 LIMIT 1;
 
-/* #5 What is the average tempo for all 50 songs? */
+-- #5 What is the average tempo for all 50 songs? 
+
 SELECT avg(tempo)
 FROM BIT_DB.Spotifydata;
 
 
-/* #6 Which songs have a higher than average tempo compared to the average tempo in beats per minute? */
+-- #6 Which songs have a higher than average tempo compared to the average tempo in beats per minute?
+
 SELECT artist_name, track_name, tempo
 FROM BIT_DB.Spotifydata
 WHERE tempo > (SELECT avg(tempo) FROM BIT_DB.Spotifydata)
@@ -71,8 +77,8 @@ ORDER BY tempo desc;
 Then, for every artist with an average popularity of 90 or above, show their name, 
 their average popularity, and label them as a “Top Star”. */ 
 
-# In order to complete the task above, I have created a CTE (common table expression) in order to label 
-the artists from the Spotify data with an average popularity over 90 with "Top Star". 
+-- In order to complete the task above, I have created a CTE (common table expression) in order to label 
+-- the artists from the Spotify data with an average popularity over 90 with "Top Star". 
 
 
 WITH popularity_average_CTE AS (
