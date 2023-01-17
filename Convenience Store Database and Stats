@@ -2,7 +2,7 @@
 
 CREATE TABLE store (id INTEGER PRIMARY KEY, item TEXT, aisle INTEGER, quantity INTEGER, price INTEGER);
 
-*// milk, ice cream, toothpaste, tissues, diapers, makeup, hotdogs, nachos, advil, candy, chips, 
+--milk, ice cream, toothpaste, tissues, diapers, makeup, hotdogs, nachos, advil, candy, chips, 
 water, soda, coffee, energy drinks, lottery tickets, beer
 
 INSERT INTO store VALUES (1, "milk", 1, 40, 3.99);
@@ -24,16 +24,16 @@ INSERT INTO store VALUES (13, "lottery tickets", 5, 100, 5.00);
 INSERT INTO store VALUES (13, "beer", 4, 40, 10.99);
 
 
---display the database ordered by price
+-- #1. Display the database ordered by price.
 SELECT * FROM store
 ORDER BY price desc; 
 
---what is average price of items in the 3rd aisle?
+-- #2. What is average price of items in the 3rd aisle?
 SELECT AVG(price) "avg aisle 3 price"
 FROM store
 where aisle = '3';
 
---which items need to be restocked? 
+-- #3. Which items need to be restocked? 
 SELECT item, quantity
 FROM store
 WHERE quantity < 40;
